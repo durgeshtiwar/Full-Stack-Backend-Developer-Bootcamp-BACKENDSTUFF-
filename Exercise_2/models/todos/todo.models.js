@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-new todoSchema = new mongoose.Schema(
+const todoSchema = new mongoose.Schema(
   {
     content : {
       type : String,
