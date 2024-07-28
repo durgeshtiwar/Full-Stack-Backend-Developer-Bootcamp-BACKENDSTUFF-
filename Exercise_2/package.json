@@ -1,20 +1,15 @@
 {
-  "name": "chaibackend",
+  "name": "exercise_2",
   "version": "1.0.0",
-  "description": "a basic app to deploy",
+  "description": "a backend project",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "node",
-    "chai"
+    "javascript",
+    "backend"
   ],
-  "author": "durgesh tiwari",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "mongoose": "^8.5.1"
-  }
+  "author": "Durgesh Tiwari",
+  "license": "ISC"
 }
