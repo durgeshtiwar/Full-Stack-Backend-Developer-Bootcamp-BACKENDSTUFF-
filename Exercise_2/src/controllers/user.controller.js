@@ -1,11 +1,8 @@
-import { asyncHandler } from "../utils/asyncHandler.js";
-
-const registerUser = asyncHandler( async (req, res) =>
-  {
-      res.status(200).json({
-      message : "ok"
-    })
-  })
-
-  console.log(registerUser());
-export {registerUser}
+// import { asyncHandler } from "../utils/asyncHandler.js";
+// const registerUser = asyncHandler( async (req, res) =>
+//   {
+//     fetch('https://dummyjson.com/posts')
+//     .then(res => res.json())
+//   })
+//   console.log(registerUser());
+// export {registerUser}
