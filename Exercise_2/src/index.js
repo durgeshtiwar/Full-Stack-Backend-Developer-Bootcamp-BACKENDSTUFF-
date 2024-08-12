@@ -4,6 +4,8 @@ import connectDb from "./db/dbindex.js";
 import dotenv from "dotenv"
 
 dotenv.config({path:"./.env"})
+//dotenv.config({path:"./.env"})
+
 app.on("error",(error)=>{
         console.log("Error : "+ error);
         throw error;
