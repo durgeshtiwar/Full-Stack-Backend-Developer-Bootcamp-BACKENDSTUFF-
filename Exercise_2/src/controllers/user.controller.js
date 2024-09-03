@@ -45,7 +45,6 @@ const registerUser = asyncHandler( async (req, res) =>
       throw new ApiError(400, "avatar fields are required");
     }
 
-
     const avatar = await uploadCloudinary(avatarLocalPath);
     const coverImage = await uploadCloudinary(coverImageLocalPath);
     //console.log(avatar);
