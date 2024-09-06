@@ -138,7 +138,6 @@ const loginUser = asyncHandler( async(req, res) =>{
       "User LoggedIn Successfully"
     ))
 
-
 } )
 
 
