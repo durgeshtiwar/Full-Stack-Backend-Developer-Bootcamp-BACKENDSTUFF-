@@ -100,7 +100,7 @@ const loginUser = asyncHandler( async(req, res) =>{
   //send cookies
 
   const {username, email, password} = req.body()
-  if (!(username || !email)) {
+  if (!(username || email)) {
     throw new ApiError(400,"username and email is required")    
   }
 
@@ -137,9 +137,11 @@ const loginUser = asyncHandler( async(req, res) =>{
       },
       "User LoggedIn Successfully"
     ))
-
 } )
 
+const logOutUser = asyncHandler( async(req, res) =>{
+
+})
 
 export {
   registerUser,loginUser
