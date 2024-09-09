@@ -7,11 +7,13 @@ import { apiResponse } from "../utils/apiResponse.js";
 const generateAccessAndRefreshTokens = async(userId) =>{
   try {
     const user = await User.findOne(userId);
-    const accessToken = await user.generateAccessToken();
-    const refreshToken = await user.generateRefreshToken();
+    const accessToken = user.generateAccessToken();
+    const refreshToken =  user.generateRefreshToken();
     user.refreshToken = refreshToken;
     await user.save({validateBeforeSave: false });
-    return (accessToken, refreshToken);
+    // console.log("Acceses token" + accessToken);
+    // console.log("refres token" + refreshToken);
+    return {accessToken, refreshToken};
 
   } catch (error) {
     throw new ApiError(500,"Something went wrong while generating access refresh token")
@@ -118,6 +120,8 @@ const loginUser = asyncHandler( async(req, res) =>{
   }
 
   const {accessToken, refreshToken} = await generateAccessAndRefreshTokens(user._id);
+  console.log("Acceses token" + accessToken);
+  console.log("refres token" + refreshToken);
   const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
 
   const options = {
@@ -125,18 +129,19 @@ const loginUser = asyncHandler( async(req, res) =>{
     secure : true
   }
 
-  return res.
-  status(200).
-  cookie("accessToken", accessToken, options).
-  cookie("refreshToken", refreshToken, options).
-  json(
-    new apiResponse(
-      200,
-      {
-        user: loggedInUser, accessToken, refreshToken
-      },
-      "User LoggedIn Successfully"
-    ))
+  return res
+    .status(200)
+    .cookie("accessToken", accessToken, options)
+    .cookie("refreshToken", refreshToken, options)
+    .json(
+        new apiResponse(
+            200, 
+            {
+                user: loggedInUser, accessToken, refreshToken
+            },
+            "User logged In Successfully"
+        )
+  )
 } )
 
 const logOutUser = asyncHandler( async(req, res) =>{
@@ -151,15 +156,15 @@ const logOutUser = asyncHandler( async(req, res) =>{
         new : true
     }
     )
-const options = {
+  const options = {
   httpOnly : true,
   secure : true
-}
-return res.
-status(200).
-clearCookie("accessToken",options).
-clearCookie("refreshToken",options).
-json(new apiResponse(200, {}, "User LoggedOut"))  
+  }
+  return res
+  .status(200)
+  .clearCookie("accessToken", options)
+  .clearCookie("refreshToken", options)
+  .json(new apiResponse(200, {}, "User logged Out"))
 })
 
 export {
