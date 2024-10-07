@@ -1,7 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const server = http.createServer((req,res)=>{
-console.log(req.url, req.method);
+//console.log(req.url, req.method);
 if (req.url === '/') {
   res.setHeader("Content-Type","text/html");
   res.write(`
@@ -23,6 +23,15 @@ if (req.url === '/') {
 </html>`);
 return res.end();
 } else if (req.url.toLowerCase() === "/submit-details" && req.method === "POST") {
+  const body = [];
+  req.on("data",(chunk)=>{
+    console.log(chunk);
+    body.push(chunk);
+  });
+  req.on("end",()=>{
+    const fullBody = Buffer.concat(body).toString();
+    console.log(fullBody);
+  })
   fs.writeFileSync("user.text","Durgesh Tiwari");
   res.statusCode = 302;
   res.setHeader("Loction","/");
