@@ -1,3 +1,5 @@
+const calculaterFeild = require("./feild");
+
 const homePage = (req, res) =>{
   if (req.url === '/') {
     res.setHeader("Content-Type","text/html");
@@ -29,10 +31,7 @@ const homePage = (req, res) =>{
       </html>`);   
     return res.end(); 
   }else if (req.url.toLowerCase() === "/calculate-result" && req.method === "POST") {
-    console.log(req.url, req.method);
-    req.on("data",(chunk)=>{
-      console.log(chunk);
-    });
+    return calculaterFeild(req, res);
   }
 }
 module.exports = homePage;
