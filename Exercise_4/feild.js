@@ -1,5 +1,5 @@
 const calculaterFeild = (req, res) => { 
-  // res.write("<h1>Kya ye bhi nhi dkha rha</h1>")
+   res.write("<h1>Kya ye bhi nhi dkha rha</h1>")
   const body = [];
   req.on("data",(chunk)=>{
     //console.log(chunk);
