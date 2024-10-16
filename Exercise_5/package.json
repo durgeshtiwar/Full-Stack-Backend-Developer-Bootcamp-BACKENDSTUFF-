@@ -1,0 +1,21 @@
+{
+  "name": "exercise_5",
+  "version": "1.0.0",
+  "description": "first Project using Express.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "Durgesh Tiwari",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
