@@ -35,8 +35,8 @@ app.post("/contact-us",(req, res, next)=>{
   res.send("<h1>We Will contact you soon.</h1>");
 })
 
-const server = http.createServer(app);
+//const server = http.createServer(app);
 PORT = 3000;
-server.listen(PORT,()=>{
+app.listen(PORT,()=>{
   console.log(`server are running at port ${PORT}`);
 })
