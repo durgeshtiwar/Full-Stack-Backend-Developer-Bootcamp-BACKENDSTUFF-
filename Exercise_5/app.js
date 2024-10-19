@@ -1,5 +1,6 @@
-const http = require('http');
+//const http = require('http');
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 // app.use((req, res, next)=>{
 //   console.log("first middleware = " + req.url, req.method);
@@ -30,8 +31,10 @@ app.get("/contact-us",(req, res, next)=>{
       <input type="submit" value="Submit"><br>
     </form>`)
 });
+app.use(bodyParser.urlencoded());
 app.post("/contact-us",(req, res, next)=>{
   console.log("Responce of post");
+  console.log(req.body);
   res.send("<h1>We Will contact you soon.</h1>");
 })
 
