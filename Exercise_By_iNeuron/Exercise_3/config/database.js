@@ -1,15 +1,17 @@
-const mongoose = require('mongoose')
-MONGODB_URL = "Somthing";
-exports.conection = () => {
-  mongoose.connect(MONGODB_URL,{
+const mongoose = require("mongoose");
+const MONGODB_URL = "Some String";
+exports.connect = () =>{
+  mongoose.connect(MONGODB_URL,
+    {
     useNewUrlParser : true,
     useUnifiedTopology : true
-  }).then(
-    console.log(`Database Connected Succefully`)
-  )
-  .catch((error)=>{
-    console.log(`DB Connection Faild`)
-    console.log(error)
-    process.exit(1)
-  })
+    })
+    .then(console.log("Database Connected Succesfully"))
+    .catch(
+      (error)=>{
+        console.log("Database connection faild");
+        console.log(error);
+        process.exit(1);
+      }
+    )
 }
